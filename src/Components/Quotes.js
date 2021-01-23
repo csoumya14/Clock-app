@@ -7,10 +7,12 @@ const Container = styled.div`
   width: calc(100% - 50px);
   display: flex;
   flex-direction: row;
-
+  height: 97px;
   margin-top: 31.67px;
   margin-left: 26px;
   align-items: flex-start;
+
+  transform: ${({ isOpen }) => (isOpen ? 'translateY(-200%)' : '')};
 `;
 
 const Figure = styled.figure`
@@ -38,15 +40,15 @@ const Button = styled.button`
 `;
 
 const Quotes = () => {
-  const { quote } = useContext(Context);
+  const { quote, getQuote, isOpen } = useContext(Context);
   return (
-    <Container>
+    <Container isOpen={isOpen}>
       <Figure>
         <blockquote className="quote">"{quote.content}"</blockquote>
         <figcaption className="caption">{quote.author}</figcaption>
       </Figure>
       <Button>
-        <img src={refreshButton} alt="" />
+        <img src={refreshButton} alt="" role="button" onClick={getQuote} />
       </Button>
     </Container>
   );

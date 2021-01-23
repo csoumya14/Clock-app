@@ -22,6 +22,7 @@ const initialQuoteState = {
 
 const Provider = ({ children }) => {
   const [time, setTime] = useState(initialTimeState);
+  const [greeting, setGreeting] = useState('Good morning');
   const [quote, setQuote] = useState(initialQuoteState);
   const [isOpen, setIsOpen] = useState(false);
   const [isDay, setIsDay] = useState(false);
@@ -31,20 +32,99 @@ const Provider = ({ children }) => {
   };
   const checkTime = (timeValue) => {
     const currentHour = new Date(timeValue).getHours();
-    setIsDay(currentHour >= 5 || currentHour <= 18 ? true : false);
+    setIsDay(currentHour >= 5 && currentHour <= 18 ? true : false);
+  };
+  const checkDayTime = (timeValue) => {
+    const hour = new Date(timeValue).getHours();
+    let greeting;
+    switch (true) {
+      case hour >= 5 && hour < 12:
+        greeting = 'Good Morning';
+        break;
+      case hour >= 12 && hour < 18:
+        greeting = 'Good afternoon';
+        break;
+      case hour >= 18 || hour < 5:
+        greeting = 'Good evening';
+        break;
+      default:
+        greeting = 'Good Morning';
+        break;
+    }
+    setGreeting(greeting);
+  };
+  const getTime = async () => {
+    try {
+      const response = await axios.get('https://worldtimeapi.org/api/ip/');
+      if (response.status === 200) {
+        const {
+          abbreviation,
+          datetime,
+          day_of_week,
+          day_of_year,
+          timezone,
+          week_number,
+        } = response.data;
+
+        setTime((prev) => ({
+          ...prev,
+          abbreviation,
+          datetime,
+          day_of_week,
+          day_of_year,
+          timezone,
+          week_number,
+        }));
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const getQuote = async () => {
+    try {
+      const response = await axios.get('https://api.quotable.io/random/');
+      if (response.status === 200) {
+        const { author, content } = response.data;
+        setQuote({ author, content });
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const getLocation = async () => {
+    try {
+      const response = await axios.get('https://freegeoip.app/json/');
+      if (response.status === 200) {
+        const { city, country_code } = response.data;
+        setTime((prev) => ({
+          ...prev,
+          city,
+          country_code,
+        }));
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
     checkTime(time.datetime);
+    checkDayTime(time.datetime);
+    getLocation();
+    getQuote();
+    getTime();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const ContextValue = {
     time,
     quote,
+    getQuote,
     isOpen,
     OpenDetails,
     isDay,
+    greeting,
   };
   return <Context.Provider value={ContextValue}>{children}</Context.Provider>;
 };

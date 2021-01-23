@@ -21,7 +21,6 @@ const Container = styled.main`
 
 const Background = ({ children }) => {
   const { isDay } = useContext(Context);
-
   return <Container isDay={isDay}>{children}</Container>;
 };
 

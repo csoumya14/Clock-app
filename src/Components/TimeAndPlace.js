@@ -7,8 +7,9 @@ import styled from 'styled-components';
 const Section = styled.section`
   width: calc(100% - 90px);
   height: 185px;
-
-  margin-top: 50%;
+  position: absolute;
+  margin-top: 250px;
+  transform: ${({ isOpen }) => (isOpen ? 'translateY(-150%)' : '')};
   margin-left: 26px;
   display: flex;
   flex-direction: column;
@@ -45,15 +46,16 @@ const Section = styled.section`
 `;
 
 const TimeAndPlace = () => {
-  const { time, isDay } = useContext(Context);
+  const { time, isDay, greeting, isOpen } = useContext(Context);
+
   return (
-    <Section>
+    <Section isOpen={isOpen}>
       <div className="sun-and-greetings">
         {isDay ? <img src={sunIcon} alt="" /> : <img src={moonIcon} alt="" />}
-        <span>Good Morning</span>
+        <span>{greeting}</span>
       </div>
       <h1 className="heading">
-        {time.datetime.getHours()}:{time.datetime.getMinutes()}
+        {new Date(time.datetime).toTimeString().slice(0, 5)}
         <span>{time.abbreviation}</span>
       </h1>
       <p className="city-and-country">
@@ -63,3 +65,6 @@ const TimeAndPlace = () => {
   );
 };
 export default TimeAndPlace;
+/*
+{time.datetime.getHours()}:{time.datetime.getMinutes()}
+*/
