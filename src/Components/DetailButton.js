@@ -5,11 +5,11 @@ import { Context } from '../Context';
 
 const Wrapper = styled.div`
   width: 115px;
-  margin-left: 26px;
-  margin-top: 460px;
+  margin-left: 16px;
+  margin-top: 2rem;
   background: ${({ theme }) => theme.white};
   border-radius: 28px;
-  transform: ${({ isOpen }) => (isOpen ? 'translateY(-650%)' : '')};
+
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -25,12 +25,30 @@ const Wrapper = styled.div`
     opacity: 0.5;
     color: ${({ theme }) => theme.black};
   }
+  @media (min-width: ${({ theme }) => theme.mediaSize.md}) {
+    width: 146px;
+    height: 56px;
+    .button-text {
+      font-size: 16px;
+      line-height: 28px;
+      letter-spacing: 5px;
+      opacity: 0.5;
+      color: ${({ theme }) => theme.black};
+    }
+  }
+  @media (min-width: ${({ theme }) => theme.mediaSize.lg}) {
+    margin-top: 15rem;
+  }
 `;
 const ButtonElement = styled.img`
   width: 32px;
   height: 32px;
 
   transform: ${({ isOpen }) => (isOpen ? 'rotate(0)' : 'rotate(180deg)')};
+  @media (min-width: ${({ theme }) => theme.mediaSize.lg}) {
+    width: 40px;
+    height: 40px;
+  }
 `;
 
 const DetailButton = () => {

@@ -3,17 +3,18 @@ import { Context } from '../Context';
 import sunIcon from '../assets/desktop/icon-sun.svg';
 import moonIcon from '../assets/desktop/icon-moon.svg';
 import styled from 'styled-components';
+import DetailButton from './DetailButton';
 
 const Section = styled.section`
   width: calc(100% - 90px);
-  height: 185px;
-  position: absolute;
-  margin-top: 250px;
-  transform: ${({ isOpen }) => (isOpen ? 'translateY(-150%)' : '')};
+  height: 285px;
+  margin-top: ${({ isOpen }) => (isOpen ? '100px' : '210px')};
   margin-left: 26px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
   color: #ffffff;
   .sun-and-greetings span {
     font-size: 15px;
@@ -43,6 +44,65 @@ const Section = styled.section`
     letter-spacing: 3px;
     text-transform: uppercase;
   }
+  @media (min-width: ${({ theme }) => theme.mediaSize.s}) {
+    margin-top: ${({ isOpen }) => (isOpen ? '10px' : '40px')};
+    height: 185px;
+  }
+  @media (min-width: ${({ theme }) => theme.mediaSize.md}) {
+    margin-top: ${({ isOpen }) => (isOpen ? '150px' : '450px')};
+    height: 367px;
+
+    margin-left: 64px;
+    .sun-and-greetings span {
+      font-size: 18px;
+      line-height: 28px;
+      letter-spacing: 3.6px;
+    }
+    .heading {
+      font-size: 175px;
+      line-height: 175px;
+      letter-spacing: -4.375px;
+    }
+    .heading span {
+      font-weight: 300;
+      font-size: 32px;
+
+      line-height: 28px;
+    }
+    .city-and-country {
+      margin-top: -9rem;
+      font-size: 18px;
+      line-height: 28px;
+      letter-spacing: 3.6px;
+    }
+  }
+  @media (min-width: ${({ theme }) => theme.mediaSize.lg}) {
+    margin-top: ${({ isOpen }) => (isOpen ? '150px' : '300px')};
+    height: 367px;
+
+    margin-left: 155px;
+    .sun-and-greetings span {
+      font-size: 20px;
+      letter-spacing: 4px;
+    }
+    .heading {
+      font-size: 200px;
+      line-height: 200px;
+      letter-spacing: -5px;
+    }
+    .heading span {
+      font-weight: 300;
+      font-size: 40px;
+
+      line-height: 28px;
+    }
+    .city-and-country {
+      margin-top: -9rem;
+      font-size: 24px;
+      line-height: 28px;
+      letter-spacing: 4.8px;
+    }
+  }
 `;
 
 const TimeAndPlace = () => {
@@ -50,21 +110,25 @@ const TimeAndPlace = () => {
 
   return (
     <Section isOpen={isOpen}>
-      <div className="sun-and-greetings">
-        {isDay ? <img src={sunIcon} alt="" /> : <img src={moonIcon} alt="" />}
-        <span>{greeting}</span>
+      <div>
+        <div className="sun-and-greetings">
+          {isDay ? <img src={sunIcon} alt="" /> : <img src={moonIcon} alt="" />}
+          <span>{greeting}</span>
+        </div>
+        <h1 className="heading">
+          {new Date(time.datetime).toTimeString().slice(0, 5)}
+          <span>{time.abbreviation}</span>
+        </h1>
+        <p className="city-and-country">
+          In {time.city} ,{time.country_code}
+        </p>
       </div>
-      <h1 className="heading">
-        {new Date(time.datetime).toTimeString().slice(0, 5)}
-        <span>{time.abbreviation}</span>
-      </h1>
-      <p className="city-and-country">
-        In {time.city} ,{time.country_code}
-      </p>
+      <DetailButton />
     </Section>
   );
 };
 export default TimeAndPlace;
 /*
 {time.datetime.getHours()}:{time.datetime.getMinutes()}
+ 
 */

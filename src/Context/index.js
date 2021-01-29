@@ -14,18 +14,12 @@ const initialTimeState = {
   week_number: 42,
 };
 
-const initialQuoteState = {
-  author: 'Ada Lovelace',
-  content:
-    'The science of operations, as derived from mathematics more especially, is a science of itself, and has its own abstract truth and value.',
-};
-
 const Provider = ({ children }) => {
   const [time, setTime] = useState(initialTimeState);
   const [greeting, setGreeting] = useState('Good morning');
-  const [quote, setQuote] = useState(initialQuoteState);
   const [isOpen, setIsOpen] = useState(false);
   const [isDay, setIsDay] = useState(false);
+  const [width, setWidth] = useState(window.innerWidth);
 
   const OpenDetails = () => {
     setIsOpen(!isOpen);
@@ -80,9 +74,10 @@ const Provider = ({ children }) => {
       console.error(error);
     }
   };
+  /*
   const getQuote = async () => {
     try {
-      const response = await axios.get('https://api.quotable.io/random/');
+      const response = await axios.get('/quotes');
       if (response.status === 200) {
         const { author, content } = response.data;
         setQuote({ author, content });
@@ -91,6 +86,7 @@ const Provider = ({ children }) => {
       console.error(error);
     }
   };
+  */
 
   const getLocation = async () => {
     try {
@@ -112,19 +108,18 @@ const Provider = ({ children }) => {
     checkTime(time.datetime);
     checkDayTime(time.datetime);
     getLocation();
-    getQuote();
+    window.addEventListener('resize', () => setWidth(window.innerWidth));
     getTime();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const ContextValue = {
     time,
-    quote,
-    getQuote,
     isOpen,
     OpenDetails,
     isDay,
     greeting,
+    width,
   };
   return <Context.Provider value={ContextValue}>{children}</Context.Provider>;
 };
