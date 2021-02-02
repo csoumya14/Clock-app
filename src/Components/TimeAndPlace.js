@@ -16,6 +16,7 @@ const Section = styled.section`
   justify-content: flex-start;
   flex-wrap: wrap;
   color: #ffffff;
+  border: 4px solid red;
   .sun-and-greetings span {
     font-size: 15px;
     line-height: 25px;
@@ -49,8 +50,8 @@ const Section = styled.section`
     height: 185px;
   }
   @media (min-width: ${({ theme }) => theme.mediaSize.md}) {
-    margin-top: ${({ isOpen }) => (isOpen ? '150px' : '450px')};
-    height: 367px;
+    margin-top: ${({ isOpen }) => (isOpen ? '150px' : '240px')};
+    height: 257px;
 
     margin-left: 64px;
     .sun-and-greetings span {
@@ -76,10 +77,10 @@ const Section = styled.section`
       letter-spacing: 3.6px;
     }
   }
-  @media (min-width: ${({ theme }) => theme.mediaSize.lg}) {
-    margin-top: ${({ isOpen }) => (isOpen ? '150px' : '300px')};
-    height: 367px;
 
+  @media (min-width: ${({ theme }) => theme.mediaSize.xlg}) {
+    margin-top: ${({ isOpen }) => (isOpen ? '150px' : '300px')};
+    height: 257px;
     margin-left: 155px;
     .sun-and-greetings span {
       font-size: 20px;

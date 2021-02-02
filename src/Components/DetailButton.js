@@ -28,6 +28,7 @@ const Wrapper = styled.div`
   @media (min-width: ${({ theme }) => theme.mediaSize.md}) {
     width: 146px;
     height: 56px;
+    margin-top: 12rem;
     .button-text {
       font-size: 16px;
       line-height: 28px;
@@ -37,7 +38,7 @@ const Wrapper = styled.div`
     }
   }
   @media (min-width: ${({ theme }) => theme.mediaSize.lg}) {
-    margin-top: 15rem;
+    margin-top: 10rem;
   }
 `;
 const ButtonElement = styled.img`
@@ -53,20 +54,14 @@ const ButtonElement = styled.img`
 
 const DetailButton = () => {
   const { OpenDetails, isOpen } = useContext(Context);
+  console.log(isOpen);
   return (
     <Wrapper isOpen={isOpen}>
       {isOpen ? <p className="button-text">less</p> : <p className="button-text">more</p>}
-
-      <ButtonElement
-        isOpen={isOpen}
-        role="button"
-        aria-expanded="false"
-        className="button-element"
-        aria-haspopup="true"
-        src={arrow}
-        alt=""
-        onClick={OpenDetails}
-      />
+      <button onClick={OpenDetails}>
+        {' '}
+        <ButtonElement isOpen={isOpen} role="button" aria-haspopup="true" src={arrow} alt="" />
+      </button>
     </Wrapper>
   );
 };

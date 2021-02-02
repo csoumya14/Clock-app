@@ -9,8 +9,9 @@ import desktopDayImg from '../assets/desktop/bg-image-daytime.jpg';
 import desktopNightImg from '../assets/desktop/bg-image-nighttime.jpg';
 
 const Container = styled.main`
-  width: 100vw;
   height: 100vh;
+  max-width: 100%;
+  width: 100vw;
   position: absolute;
   border: 1px solid transparent;
   z-index: -1;
@@ -18,7 +19,7 @@ const Container = styled.main`
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  @media (min-width: ${({ theme }) => theme.mediaSize.s}) {
+  @media (min-width: ${({ theme }) => theme.mediaSize.md}) {
     background-image: url(${({ isDay }) => (isDay ? tabDayImg : tabNightImg)});
   }
   @media (min-width: ${({ theme }) => theme.mediaSize.lg}) {

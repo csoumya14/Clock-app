@@ -16,7 +16,7 @@ const Foreground = styled.div`
 `;
 
 const Main = () => {
-  const breakpoint = 767;
+  const breakpoint = 600;
   const { width } = useContext(Context);
   return (
     <Background>

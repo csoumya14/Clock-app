@@ -7,11 +7,15 @@ const TableContainer = styled.div`
   backdrop-filter: blur(40.7742px);
   width: 100vw;
   height: 50%;
-  margin-top: 1.9rem;
+  margin-top: 1rem;
   display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
-
+  border: 1px solid green;
   justify-content: center;
   align-items: center;
+  @media (min-width: ${({ theme }) => theme.mediaSize.lg}) {
+    height: 50%;
+    margin-top: 0rem;
+  }
 `;
 
 const Table = styled.table`
@@ -40,7 +44,7 @@ const Table = styled.table`
     font-size: 13px;
     letter-spacing: 2.6px;
     text-transform: uppercase;
-    font-style: normal;
+    font-weight: 300;
   }
   .column-values {
     text-align: left;
@@ -49,6 +53,9 @@ const Table = styled.table`
 
     font-weight: 700;
     color: #303030;
+  }
+  @media (min-width: ${({ theme }) => theme.mediaSize.lg}) {
+    width: 90vw;
   }
 `;
 

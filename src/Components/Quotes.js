@@ -8,7 +8,6 @@ const Container = styled.div`
   width: calc(100% - 50px);
   display: flex;
   flex-direction: row;
-
   height: 97px;
   margin-top: 31.67px;
   margin-left: 26px;
@@ -65,7 +64,8 @@ const Quotes = () => {
   const [quo, setQuo] = useState([]);
   const [count, setCount] = useState(0);
   const getQuote = () => {
-    setCount(count + 1);
+    let randomNumber = Math.floor(Math.random() * 15);
+    setCount(randomNumber);
   };
   useEffect(() => setQuo(QuotesData[count]), [count]);
 
@@ -77,7 +77,7 @@ const Quotes = () => {
         <figcaption className="caption">{quo.author}</figcaption>
       </Figure>
       <Button>
-        <img src={refreshButton} alt="" role="button" onClick={getQuote} />
+        <input type="image" src={refreshButton} alt="" onClick={getQuote} />
       </Button>
     </Container>
   );
