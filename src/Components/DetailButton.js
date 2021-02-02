@@ -14,7 +14,11 @@ const Wrapper = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-
+  .buttons {
+    background: transparent;
+    outline: none;
+    border: none;
+  }
   .button-text {
     font-size: 12px;
     line-height: 14px;
@@ -58,7 +62,7 @@ const DetailButton = () => {
   return (
     <Wrapper isOpen={isOpen}>
       {isOpen ? <p className="button-text">less</p> : <p className="button-text">more</p>}
-      <button onClick={OpenDetails}>
+      <button onClick={OpenDetails} className="buttons">
         {' '}
         <ButtonElement isOpen={isOpen} role="button" aria-haspopup="true" src={arrow} alt="" />
       </button>

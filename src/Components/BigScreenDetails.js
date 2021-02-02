@@ -7,24 +7,25 @@ const TableContainer = styled.div`
   backdrop-filter: blur(40.7742px);
   width: 100vw;
   height: 50%;
-  margin-top: 1rem;
+  margin-top: 5rem;
   display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
-  border: 1px solid green;
+
   justify-content: center;
   align-items: center;
+
   @media (min-width: ${({ theme }) => theme.mediaSize.lg}) {
     height: 50%;
-    margin-top: 0rem;
+    margin-top: 5rem;
   }
 `;
 
 const Table = styled.table`
-  width: 80vw;
+  width: 100vw;
   height: 140px;
 
   border-collapse: collapse;
   table-layout: fixed;
-
+  margin-left: 160px;
   .upper-row {
     height: 50px;
   }

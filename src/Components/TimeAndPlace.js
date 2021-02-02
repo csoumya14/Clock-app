@@ -16,7 +16,7 @@ const Section = styled.section`
   justify-content: flex-start;
   flex-wrap: wrap;
   color: #ffffff;
-  border: 4px solid red;
+
   .sun-and-greetings span {
     font-size: 15px;
     line-height: 25px;
@@ -46,11 +46,10 @@ const Section = styled.section`
     text-transform: uppercase;
   }
   @media (min-width: ${({ theme }) => theme.mediaSize.s}) {
-    margin-top: ${({ isOpen }) => (isOpen ? '10px' : '40px')};
     height: 185px;
   }
   @media (min-width: ${({ theme }) => theme.mediaSize.md}) {
-    margin-top: ${({ isOpen }) => (isOpen ? '150px' : '240px')};
+    margin-top: ${({ isOpen }) => (isOpen ? '290px' : '250px')};
     height: 257px;
 
     margin-left: 64px;
@@ -79,7 +78,7 @@ const Section = styled.section`
   }
 
   @media (min-width: ${({ theme }) => theme.mediaSize.xlg}) {
-    margin-top: ${({ isOpen }) => (isOpen ? '150px' : '300px')};
+    margin-top: ${({ isOpen }) => (isOpen ? '150px' : '250px')};
     height: 257px;
     margin-left: 155px;
     .sun-and-greetings span {
