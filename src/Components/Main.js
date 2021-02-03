@@ -12,7 +12,8 @@ const Foreground = styled.div`
   height: 100%;
   position: absolute;
   z-index: -1;
-  backdrop-filter: contrast(0.7);
+  background: transparent;
+  background-color: hsla(0, 0%, 0%, 0.4);
 `;
 
 const Main = () => {

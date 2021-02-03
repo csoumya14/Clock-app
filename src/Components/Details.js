@@ -68,6 +68,3 @@ const Details = () => {
   );
 };
 export default Details;
-/*
- transform: ${({ isOpen }) => (isOpen ? 'translateY(-100%)' : '')};
- */

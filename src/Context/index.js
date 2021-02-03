@@ -74,19 +74,6 @@ const Provider = ({ children }) => {
       console.error(error);
     }
   };
-  /*
-  const getQuote = async () => {
-    try {
-      const response = await axios.get('/quotes');
-      if (response.status === 200) {
-        const { author, content } = response.data;
-        setQuote({ author, content });
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  */
 
   const getLocation = async () => {
     try {

@@ -9,15 +9,13 @@ const Wrapper = styled.div`
   margin-top: 2rem;
   background: ${({ theme }) => theme.white};
   border-radius: 28px;
-
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
   .buttons {
-    background: transparent;
-    outline: none;
-    border: none;
+    width: 32px;
+    height: 32px;
   }
   .button-text {
     font-size: 12px;
@@ -26,7 +24,7 @@ const Wrapper = styled.div`
     text-transform: uppercase;
     text-align: center;
     margin-left: 17px;
-    opacity: 0.5;
+
     color: ${({ theme }) => theme.black};
   }
   @media (min-width: ${({ theme }) => theme.mediaSize.md}) {
@@ -37,19 +35,22 @@ const Wrapper = styled.div`
       font-size: 16px;
       line-height: 28px;
       letter-spacing: 5px;
-      opacity: 0.5;
-      color: ${({ theme }) => theme.black};
     }
   }
   @media (min-width: ${({ theme }) => theme.mediaSize.lg}) {
     margin-top: 10rem;
   }
 `;
-const ButtonElement = styled.img`
+const Button = styled.button`
   width: 32px;
   height: 32px;
+  background-image: url(${arrow});
+  background-size: cover;
+  border: none;
 
+  border-radius: 50%;
   transform: ${({ isOpen }) => (isOpen ? 'rotate(0)' : 'rotate(180deg)')};
+
   @media (min-width: ${({ theme }) => theme.mediaSize.lg}) {
     width: 40px;
     height: 40px;
@@ -62,10 +63,7 @@ const DetailButton = () => {
   return (
     <Wrapper isOpen={isOpen}>
       {isOpen ? <p className="button-text">less</p> : <p className="button-text">more</p>}
-      <button onClick={OpenDetails} className="buttons">
-        {' '}
-        <ButtonElement isOpen={isOpen} role="button" aria-haspopup="true" src={arrow} alt="" />
-      </button>
+      <Button isOpen={isOpen} onClick={OpenDetails}></Button>
     </Wrapper>
   );
 };

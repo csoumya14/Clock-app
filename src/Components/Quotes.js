@@ -76,8 +76,8 @@ const Quotes = () => {
         <blockquote className="quote">{quo.text}</blockquote>
         <figcaption className="caption">{quo.author}</figcaption>
       </Figure>
-      <Button>
-        <input type="image" src={refreshButton} alt="" onClick={getQuote} />
+      <Button onClick={getQuote}>
+        <input type="image" src={refreshButton} alt="display a new quote" />
       </Button>
     </Container>
   );

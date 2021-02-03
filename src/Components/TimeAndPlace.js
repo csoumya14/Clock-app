@@ -9,6 +9,8 @@ const Section = styled.section`
   width: calc(100% - 90px);
   height: 285px;
   margin-top: ${({ isOpen }) => (isOpen ? '100px' : '210px')};
+  transition: margin-top 0.5s;
+
   margin-left: 26px;
   display: flex;
   flex-direction: column;
@@ -49,7 +51,7 @@ const Section = styled.section`
     height: 185px;
   }
   @media (min-width: ${({ theme }) => theme.mediaSize.md}) {
-    margin-top: ${({ isOpen }) => (isOpen ? '290px' : '250px')};
+    margin-top: ${({ isOpen }) => (isOpen ? '250px' : '250px')};
     height: 257px;
 
     margin-left: 64px;
@@ -128,7 +130,3 @@ const TimeAndPlace = () => {
   );
 };
 export default TimeAndPlace;
-/*
-{time.datetime.getHours()}:{time.datetime.getMinutes()}
- 
-*/
