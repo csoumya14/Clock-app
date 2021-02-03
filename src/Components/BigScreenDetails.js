@@ -72,10 +72,10 @@ const BigScreenTable = () => {
             </th>
           </tr>
           <tr className="upper-row">
-            <td headers="co1 " className="column-values">
+            <td headers="co1" className="column-values">
               {time.timezone}
             </td>
-            <td headers="co2 " className="column-values">
+            <td headers="co2" className="column-values">
               {time.day_of_year}
             </td>
           </tr>
@@ -88,10 +88,10 @@ const BigScreenTable = () => {
             </th>
           </tr>
           <tr className="lower-row">
-            <td headers="co3 " className="column-values">
+            <td headers="co3" className="column-values">
               {time.day_of_year}
             </td>
-            <td headers="co4 " className="column-values">
+            <td headers="co4" className="column-values">
               {time.week_number}
             </td>
           </tr>
