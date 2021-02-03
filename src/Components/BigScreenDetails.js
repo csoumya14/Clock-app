@@ -38,7 +38,6 @@ const Table = styled.table`
   .lower-row th {
     padding-top: 2rem;
   }
-
   .table-heading {
     color: #303030;
     text-align: left;
@@ -49,9 +48,7 @@ const Table = styled.table`
   }
   .column-values {
     text-align: left;
-
     font-size: 40px;
-
     font-weight: 700;
     color: #303030;
   }
@@ -65,36 +62,38 @@ const BigScreenTable = () => {
   return (
     <TableContainer isOpen={isOpen}>
       <Table>
-        <thead className="header">
+        <tbody>
           <tr className="upper-row">
-            <th scope="col" className="table-heading">
+            <th id="co1" headers="blank" className="table-heading">
               Current timezone
             </th>
-            <th scope="col" className="table-heading">
+            <th id="co2" headers="blank" className="table-heading">
               Day of the year
             </th>
           </tr>
-        </thead>
-        <tbody>
           <tr className="upper-row">
-            <td className="column-values">{time.timezone}</td>
-            <td className="column-values">{time.day_of_year}</td>
+            <td headers="co1 v1" className="column-values">
+              {time.timezone}
+            </td>
+            <td headers="co2 v1" className="column-values">
+              {time.day_of_year}
+            </td>
           </tr>
-        </tbody>
-        <thead>
           <tr className="lower-row">
-            <th scope="col" className="table-heading">
+            <th id="co3" headers="blank" className="table-heading">
               Day of the week
             </th>
-            <th scope="col" className="table-heading">
+            <th id="co4" headers="blank" className="table-heading">
               Week number
             </th>
           </tr>
-        </thead>
-        <tbody>
           <tr className="lower-row">
-            <td className="column-values">{time.day_of_year}</td>
-            <td className="column-values">{time.week_number}</td>
+            <td headers="co3 v1" className="column-values">
+              {time.day_of_year}
+            </td>
+            <td headers="co4 v1" className="column-values">
+              {time.week_number}
+            </td>
           </tr>
         </tbody>
       </Table>

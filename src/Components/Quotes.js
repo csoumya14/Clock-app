@@ -55,9 +55,14 @@ const Figure = styled.figure`
   }
 `;
 const Button = styled.button`
-  background: transparent;
+  background-image: url(${refreshButton});
+  border-radius: 50%;
+  background-size: cover;
+  background-color: hsla(0, 0%, 0%, 0.1);
+
   border: none;
-  cursor: pointer;
+  width: 32px;
+  height: 32px;
 `;
 
 const Quotes = () => {
@@ -76,9 +81,7 @@ const Quotes = () => {
         <blockquote className="quote">{quo.text}</blockquote>
         <figcaption className="caption">{quo.author}</figcaption>
       </Figure>
-      <Button onClick={getQuote}>
-        <input type="image" src={refreshButton} alt="display a new quote" />
-      </Button>
+      <Button onClick={getQuote}></Button>
     </Container>
   );
 };

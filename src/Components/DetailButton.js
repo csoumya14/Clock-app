@@ -59,7 +59,7 @@ const Button = styled.button`
 
 const DetailButton = () => {
   const { OpenDetails, isOpen } = useContext(Context);
-  console.log(isOpen);
+
   return (
     <Wrapper isOpen={isOpen}>
       {isOpen ? <p className="button-text">less</p> : <p className="button-text">more</p>}
