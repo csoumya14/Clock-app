@@ -64,34 +64,34 @@ const BigScreenTable = () => {
       <Table>
         <tbody>
           <tr className="upper-row">
-            <th id="co1" headers="blank" className="table-heading">
+            <th id="co1" className="table-heading">
               Current timezone
             </th>
-            <th id="co2" headers="blank" className="table-heading">
+            <th id="co2" className="table-heading">
               Day of the year
             </th>
           </tr>
           <tr className="upper-row">
-            <td headers="co1 v1" className="column-values">
+            <td headers="co1 " className="column-values">
               {time.timezone}
             </td>
-            <td headers="co2 v1" className="column-values">
+            <td headers="co2 " className="column-values">
               {time.day_of_year}
             </td>
           </tr>
           <tr className="lower-row">
-            <th id="co3" headers="blank" className="table-heading">
+            <th id="co3" className="table-heading">
               Day of the week
             </th>
-            <th id="co4" headers="blank" className="table-heading">
+            <th id="co4" className="table-heading">
               Week number
             </th>
           </tr>
           <tr className="lower-row">
-            <td headers="co3 v1" className="column-values">
+            <td headers="co3 " className="column-values">
               {time.day_of_year}
             </td>
-            <td headers="co4 v1" className="column-values">
+            <td headers="co4 " className="column-values">
               {time.week_number}
             </td>
           </tr>
