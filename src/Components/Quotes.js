@@ -60,8 +60,8 @@ const Button = styled.button`
   background-size: cover;
   background-color: hsla(0, 0%, 0%, 0.1);
   border: none;
-  width: 32px;
-  height: 32px;
+  width: 20px;
+  height: 20px;
   .visually-hidden {
     border: 0;
     padding: 0;

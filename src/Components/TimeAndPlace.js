@@ -51,7 +51,7 @@ const Section = styled.section`
     height: 185px;
   }
   @media (min-width: ${({ theme }) => theme.mediaSize.md}) {
-    margin-top: ${({ isOpen }) => (isOpen ? '250px' : '250px')};
+    margin-top: ${({ isOpen }) => (isOpen ? '180px' : '250px')};
     height: 257px;
 
     margin-left: 64px;
@@ -78,9 +78,11 @@ const Section = styled.section`
       letter-spacing: 3.6px;
     }
   }
-
+  @media (min-width: ${({ theme }) => theme.mediaSize.lg}) {
+    margin-top: ${({ isOpen }) => (isOpen ? '350px' : '550px')};
+  }
   @media (min-width: ${({ theme }) => theme.mediaSize.xlg}) {
-    margin-top: ${({ isOpen }) => (isOpen ? '150px' : '250px')};
+    margin-top: ${({ isOpen }) => (isOpen ? '90px' : '250px')};
     height: 257px;
     margin-left: 155px;
     .sun-and-greetings span {
@@ -115,7 +117,7 @@ const TimeAndPlace = () => {
       <div>
         <div className="sun-and-greetings">
           {isDay ? <img src={sunIcon} alt="" /> : <img src={moonIcon} alt="" />}
-          <span>{greeting}</span>
+          <span>{greeting}, It's currently</span>
         </div>
         <h1 className="heading">
           {new Date(time.datetime).toTimeString().slice(0, 5)}
